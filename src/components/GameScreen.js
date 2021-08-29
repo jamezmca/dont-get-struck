@@ -35,13 +35,13 @@ export default function GameScreen() {
                 }
                 if (cells[y][x-1]) {
                     let left = cells[y][x-1]
-                    console.log(left)
-                    // cell.adjacents.push[left]
+                    cell.adjacents.push(left)
                     left.adjacents.push(cell)
                 }
             }
         }
     }
+    generateMaze()
 
     return (
         <div className={screenStyles.container}>
