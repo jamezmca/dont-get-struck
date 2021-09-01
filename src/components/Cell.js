@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import * as cellStyles from './cell.module.css'
 
 
-export default function Cell({ cell, dimensions, mazePx }) {
+export default function Cell({ cell, dimensions, mazePx, lastRow }) {
+    console.log(lastRow)
     let cellBorders = colorBorders(cell)
-    let cellWidth = mazePx  / (dimensions[1] + 2)
+    let cellWidth = mazePx / (dimensions[1] + 2)
     let cellHeight = mazePx / (dimensions[0] + 2)
 
     function colorBorders(c) {
@@ -40,6 +41,7 @@ export default function Cell({ cell, dimensions, mazePx }) {
         return false
     }
 
+
     return (
         <div className={cellStyles.cellContainer} style={{
             height: Math.min(cellWidth, cellHeight),
@@ -52,7 +54,7 @@ export default function Cell({ cell, dimensions, mazePx }) {
                 borderBottom: cellBorders.down ? '2px solid white' : '',
                 borderLeft: cellBorders.left ? '2px solid white' : '',
                 borderRight: cellBorders.right ? '2px solid white' : '',
-            }}></div>
+            }} className={lastRow ? cellStyles.hover : ''}></div>
         </div>
     )
 }

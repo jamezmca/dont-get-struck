@@ -1,4 +1,4 @@
-export function generateMaze(e, mazeWidth = 20, mazeHeight = 20) {
+export function generateMaze(e, mazeWidth = 30, mazeHeight = 30) {
     console.log('hi')
     let cells = []
     //generate maze grid

@@ -1,7 +1,7 @@
 import React from 'react'
 import { generateMaze } from './generateMaze'
 import * as screenStyles from './gamescreen.module.css'
-import Cell from './CellRow'
+import CellRow from './CellRow'
 
 export default function GameScreen() {
     const maze = generateMaze()
@@ -12,7 +12,7 @@ export default function GameScreen() {
                 width: mazePx,
                 height: mazePx
             }}>
-            {maze.map((cellRow, i) => <Cell
+            {maze.map((cellRow, i) => <CellRow
                 key={i}
                 rowNum={i}
                 cellRow={cellRow}
