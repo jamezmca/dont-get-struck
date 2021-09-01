@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export default function Cell({ cell, dimensions }) {
-    const [cellBorders, setCellBorders] = useState(false)
-    console.log(cell)
-        function colorBorders(c) {
-            let borders = { left: false, right: false, up: false, down: false }
-            borders = c.connections.reduce((acc, curr) => {
-                // console.log(checkLeft(c, curr), checkRight(c, curr), checkUp(c, curr), checkDown(c, curr))
-                acc = checkLeft(c, curr) ? { ...acc, left: true } : { ...acc, left: false }
-                acc = checkRight(c, curr) ? { ...acc, right: true } : { ...acc, right: false }
-                acc = checkUp(c, curr) ? { ...acc, up: true } : { ...acc, up: false }
-                acc = checkDown(c, curr) ? { ...acc, down: true } : { ...acc, down: false }
-                // if (checkLeft(c, curr)) return { ...acc, left: true }
-                // if (checkRight(c, curr)) return { ...acc, right: true }
-                // if (checkDown(c, curr)) return { ...acc, down: true }
-                // if (checkUp(c, curr)) return { ...acc, up: true }
-                return acc
-            }, {})
-            return borders
-
-        }
-        setCellBorders(() => colorBorders(cell))
-
+    // const [cellBorders, setCellBorders] = useState({ up: false, left: false, right: false, down: false })
+    function colorBorders(c) {
+        let borders = { left: false, right: false, up: false, down: false }
+        borders = c.connections.reduce((acc, curr) => {
+            // console.log(checkLeft(c, curr), checkRight(c, curr), checkUp(c, curr), checkDown(c, curr))
+            acc = checkLeft(c, curr) ? { ...acc, left: true } : { ...acc, left: false }
+            acc = checkRight(c, curr) ? { ...acc, right: true } : { ...acc, right: false }
+            acc = checkUp(c, curr) ? { ...acc, up: true } : { ...acc, up: false }
+            acc = checkDown(c, curr) ? { ...acc, down: true } : { ...acc, down: false }
+            return acc
+        }, {})
+        return borders
+    }
+    let cellBorders = colorBorders(cell)
     let cellWidth = window.innerWidth / (dimensions[1] + 2)
     let cellHeight = window.innerHeight / (dimensions[0] + 2)
+    console.log(cellBorders)
 
     function checkUp(curr, adj) {
         if (curr.x === adj.x && curr.y === adj.y - 1) return true
@@ -57,13 +51,10 @@ export default function Cell({ cell, dimensions }) {
         <div style={{
             height: cellHeight,
             width: cellWidth,
-            margin: '1px',
-            borderLeft: cellBorders.left ? '1px solid black' : '',
-            borderRight: cellBorders.right ? '1px solid black' : '',
-            borderTop: cellBorders.top ? '1px solid black' : '',
-            borderBottom: cellBorders.bottom ? '1px solid black' : '',
+            border: '2px solid black'
+
         }}>
-            <p>p</p>
+            <p style={{padding: 0, margin: 0}}>p</p>
         </div>
     )
 }

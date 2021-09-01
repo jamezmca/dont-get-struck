@@ -38,7 +38,6 @@ export function generateMaze(e, mazeWidth = 20, mazeHeight = 20) {
     let start = cells[startY][startX]
     frontier.add(start)
     let current = start
-    // console.log('old current', current)
 
     recursiveSpanningTree()
     function recursiveSpanningTree() {
@@ -69,7 +68,6 @@ export function generateMaze(e, mazeWidth = 20, mazeHeight = 20) {
         let iterable = [...frontier.values()]
         let randomIndex = Math.floor(Math.random() * iterable.length)
         let frontierCell = iterable[randomIndex]
-        // console.log(iterable, randomIndex, frontierCell)
 
         if (frontierCell) {
             let randomConn = Math.floor(Math.random() * frontierCell.connections.length)
@@ -79,16 +77,11 @@ export function generateMaze(e, mazeWidth = 20, mazeHeight = 20) {
         }
 
         //make the frontier cell the new current cell
-        // console.log('old current processed', current)
         current = frontierCell
-        // console.log('newcurrent', current)
-        // console.log('frontier size', frontier.size)
         if (frontier.size > 0) {
-            window.setTimeout(recursiveSpanningTree, 1);
-            // recursiveSpanningTree()
-            // console.log('calling')
+            // window.setTimeout(recursiveSpanningTree, 1);
+            recursiveSpanningTree()
         }
-        // console.log(frontier.size, visited.size)
 
     }
 
