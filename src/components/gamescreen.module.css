@@ -1,7 +1,4 @@
 .container {
-    flex: 1;
-    padding: 10px;
     display: flex;
     justify-content: center;
-    background-color: rgb(6, 6, 54);
 }

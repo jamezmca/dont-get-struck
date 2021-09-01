@@ -1,10 +1,13 @@
 import './App.css'
 import GameScreen from './components/GameScreen'
+import Layout from './components/Layout';
 
 function App() {
   return (
     <div className="container">
-      <GameScreen/>
+      <Layout>
+        <GameScreen />
+      </Layout>
     </div>
   );
 }

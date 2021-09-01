@@ -3,7 +3,10 @@ import * as cellStyles from './cell.module.css'
 
 
 export default function Cell({ cell, dimensions }) {
-    // const [cellBorders, setCellBorders] = useState({ up: false, left: false, right: false, down: false })
+    let cellBorders = colorBorders(cell)
+    let cellWidth = window.innerWidth / (dimensions[1] + 2)
+    let cellHeight = window.innerHeight / (dimensions[0] + 2)
+
     function colorBorders(c) {
         let borders = { left: false, right: false, up: false, down: false }
         borders = c.connections.reduce((acc, curr) => {
@@ -16,10 +19,6 @@ export default function Cell({ cell, dimensions }) {
         }, {})
         return borders
     }
-    let cellBorders = colorBorders(cell)
-    let cellWidth = window.innerWidth / (dimensions[1] + 2)
-    let cellHeight = window.innerHeight / (dimensions[0] + 2)
-    console.log(cellBorders)
 
     function checkUp(curr, adj) {
         if (curr.x === adj.x && curr.y === adj.y - 1) return true
@@ -41,18 +40,12 @@ export default function Cell({ cell, dimensions }) {
         return false
     }
 
-
-
-    let arr = [1, 3, 5]
-    arr.reduce((acc, curr) => {
-        return acc + curr
-    }, 0)
-
-
     return (
         <div className={cellStyles.cellContainer} style={{
-            height: cellHeight,
-            width: cellWidth,
+            height: Math.min(cellWidth, cellHeight),
+            // maxHeight: cellHeight,
+            width: Math.min(cellWidth, cellHeight),
+            // maxWidth: cellWidth
         }}>
             <div style={{
                 borderTop: cellBorders.up ? '2px solid white' : '',
