@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import * as cellStyles from './cell.module.css'
 
 
-export default function Cell({ cell, dimensions }) {
+export default function Cell({ cell, dimensions, mazePx }) {
     let cellBorders = colorBorders(cell)
-    let cellWidth = window.innerWidth / (dimensions[1] + 2)
-    let cellHeight = window.innerHeight / (dimensions[0] + 2)
+    let cellWidth = mazePx  / (dimensions[1] + 2)
+    let cellHeight = mazePx / (dimensions[0] + 2)
 
     function colorBorders(c) {
         let borders = { left: false, right: false, up: false, down: false }

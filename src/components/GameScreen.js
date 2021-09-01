@@ -5,16 +5,18 @@ import Cell from './CellRow'
 
 export default function GameScreen() {
     const maze = generateMaze()
+    let mazePx = Math.min(window.innerWidth, 0.8 * window.innerHeight)
     return (
         <div className={screenStyles.container}
             style={{
-                width: Math.min(window.innerWidth, window.innerHeight),
-                height: Math.min(window.innerWidth, window.innerHeight)
+                width: mazePx,
+                height: mazePx
             }}>
             {maze.map((cellRow, i) => <Cell
                 key={i}
                 rowNum={i}
                 cellRow={cellRow}
+                mazePx={mazePx}
                 dimensions={[maze.length, maze[0].length]} />)}
         </div>
     )
