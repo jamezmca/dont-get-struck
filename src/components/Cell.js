@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import * as cellStyles from './cell.module.css'
+
 
 export default function Cell({ cell, dimensions }) {
     // const [cellBorders, setCellBorders] = useState({ up: false, left: false, right: false, down: false })
@@ -48,13 +50,16 @@ export default function Cell({ cell, dimensions }) {
 
 
     return (
-        <div style={{
+        <div className={cellStyles.cellContainer} style={{
             height: cellHeight,
             width: cellWidth,
-            border: '2px solid black'
-
         }}>
-            <p style={{padding: 0, margin: 0}}>p</p>
+            <div style={{
+                borderTop: cellBorders.up ? '2px solid white' : '',
+                borderBottom: cellBorders.down ? '2px solid white' : '',
+                borderLeft: cellBorders.left ? '2px solid white' : '',
+                borderRight: cellBorders.right ? '2px solid white' : '',
+            }}></div>
         </div>
     )
 }

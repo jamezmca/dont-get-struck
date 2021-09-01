@@ -2,3 +2,22 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.cellContainer {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.cellContainer div {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
