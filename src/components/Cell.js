@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import * as cellStyles from './cell.module.css'
 
-
 export default function Cell({ cell, dimensions, mazePx, lastRow }) {
-    console.log(lastRow)
     let cellBorders = colorBorders(cell)
     let cellWidth = mazePx / (dimensions[1] + 2)
     let cellHeight = mazePx / (dimensions[0] + 2)
